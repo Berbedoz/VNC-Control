@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VNC Control", "VNC Control\VNC Control.csproj", "{86E2E580-1C26-4E9F-A32F-371836583461}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{86E2E580-1C26-4E9F-A32F-371836583461}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86E2E580-1C26-4E9F-A32F-371836583461}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86E2E580-1C26-4E9F-A32F-371836583461}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86E2E580-1C26-4E9F-A32F-371836583461}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {420A5508-BAB7-4542-8A3B-6A130C2CD2EF}
+	EndGlobalSection
+EndGlobal
