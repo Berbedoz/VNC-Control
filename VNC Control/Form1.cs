@@ -52,7 +52,6 @@ namespace VNC_Control
 
             // Добавление элементов в меню
             cmsTVgroupsSelectedItem.Items.AddRange(new[] { addGroupTV, renameGroupTV, delGroupTV, ReloadTV });
-            //cmsTVgroupsSelectedItemDel.Items.AddRange(new[] { addGroupTV, renameGroupTV, delGroupTV, reloadTV });
             cmsDGVSelectedItem.Items.AddRange(new[] { addItemsDGV, renameItemsDGV, delItemsDGV });
 
             // Ассоциируем контекмтное меню с TreeView
