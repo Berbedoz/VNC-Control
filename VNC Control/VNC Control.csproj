@@ -35,6 +35,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="tvnviewer.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="vncc.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

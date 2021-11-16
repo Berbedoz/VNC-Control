@@ -76,7 +76,6 @@ namespace VNC_Control
         {
             delItems();
         }
-
         private void RenameItemsDGV_Click(object sender, EventArgs e) // Вызов функции удаления записи из контекстного меню DataGridView
         {
             if (dgvList.SelectedRows.Count > 0) // Проверяем есть ли выделенная строка
@@ -95,7 +94,6 @@ namespace VNC_Control
                 RenameItemForm.tbRenameItemDGVPass.Text = ps;
                 RenameItemForm.id = id;
                 RenameItemForm.pg = pg;
-
             }
             else
             {
@@ -161,7 +159,6 @@ namespace VNC_Control
                         while (SQL.Read())
                         {
                             pgi = SQL["group_id"].ToString();
-
                         }
                     }
 
@@ -219,7 +216,7 @@ namespace VNC_Control
             }
         }
 
-        private SQLiteDataReader dbExecReader(string sqlquery)    // Функция для запросов к БД возвращающая значение
+        private SQLiteDataReader dbExecReader(string sqlquery)    // Функция для запросов к БД возвращающая значение объект SQLiteDataReader
         {
             DB = new SQLiteConnection("Data Source=vncc.db; Version=3;");
             DB.Open();
@@ -569,7 +566,8 @@ namespace VNC_Control
 
         static void VncExec(string con, bool pass, string passVNC)
         {
-            string pathToVNC = @"C:\Program Files\TightVNC\tvnviewer.exe";
+            //string pathToVNC = @"C:\Program Files\TightVNC\tvnviewer.exe";
+            string pathToVNC = "tvnviewer.exe";
             string argsVNC = @" -host=";
             string argsVNCpass = @" -password=";
             string addrVNC = con;
