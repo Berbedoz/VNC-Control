@@ -225,7 +225,7 @@ namespace VNC_Control
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 15);
             this.label1.TabIndex = 21;
-            this.label1.Text = "Версия: 0.0.8";
+            this.label1.Text = "Версия: 0.0.9";
             // 
             // cmsDGVSelectedItem
             // 

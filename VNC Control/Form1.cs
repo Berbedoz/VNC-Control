@@ -5,6 +5,8 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
+// Версия 0.0.9
+
 namespace VNC_Control
 {
     public partial class Form1 : Form
@@ -122,7 +124,7 @@ namespace VNC_Control
             string pgi = tvGroups.SelectedNode.Text.ToString(); //Определяем выбранную группу
             try
             {
-                SQLiteDataReader SQL = dbExecReader($"SELECT group_id FROM groups WHERE group_name={pgi}");
+                SQLiteDataReader SQL = dbExecReader($"SELECT group_id FROM groups WHERE group_name='{pgi}'");
                 if (SQL.HasRows)
                 {
                     while (SQL.Read())
@@ -148,26 +150,36 @@ namespace VNC_Control
 
         private void AddGroupTV_Click(object sender, EventArgs e)   // Вызов функции добавления группы из контекстного меню TreeView
         {
-            string pgi = tvGroups.SelectedNode.Text.ToString(); //Определяем выбранную группу
-            try
+            string pgi = "";
+            if (tvGroups.SelectedNode != null)
             {
-                SQLiteDataReader SQL = dbExecReader($"SELECT group_id FROM groups WHERE group_name='{pgi}'");
-                if (SQL.HasRows)
+                pgi = tvGroups.SelectedNode.Text.ToString(); //Определяем выбранную группу
+                try
                 {
-                    while (SQL.Read())
+                    SQLiteDataReader SQL = dbExecReader($"SELECT group_id FROM groups WHERE group_name='{pgi}'");
+                    if (SQL.HasRows)
                     {
-                        pgi = SQL["group_id"].ToString();
-                        
+                        while (SQL.Read())
+                        {
+                            pgi = SQL["group_id"].ToString();
+
+                        }
                     }
+
                 }
-                AddNodeTV addNodeForm = new AddNodeTV(this);
-                addNodeForm.pgi = pgi;
-                addNodeForm.Show();
+                catch (SQLiteException err)
+                {
+                    MessageBox.Show($"Ошибка запроса к БД:\n {err}");
+                }
             }
-            catch (SQLiteException err)
+            else
             {
-                MessageBox.Show($"Ошибка запроса к БД:\n {err}");
+                pgi = "0";
             }
+            AddNodeTV addNodeForm = new AddNodeTV(this);
+            addNodeForm.pgi = pgi;
+            addNodeForm.Show();
+
         }
         #endregion ContextMenu
 
@@ -381,11 +393,11 @@ namespace VNC_Control
 
         }
 
-        public void renameNode(string gn, string pgi)     // Добавление групп
+        public void renameNode(string gn, string pgi)     // Переименование групп
         {
             try
             {
-                dbExecNonQuery($"UPDATE groups SET group_name = '{gn}' WHERE group_id = {pgi};");
+                dbExecNonQuery($"UPDATE groups SET group_name = '{gn}' WHERE group_id = '{pgi}';");
                 DB.Close();
                 tvGroups.Nodes.Clear();
                 groupAdd();
@@ -405,18 +417,39 @@ namespace VNC_Control
             DialogResult dialogResult = MessageBox.Show("Удаление группы повлечет за собой удаление всех, входящих в нее, элементов. Уверены?", "Удалить группу", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                if (tvGroups.SelectedNode.Text != null) // Проверяем есть ли выделенная строка
-                {
-                    string pgi = tvGroups.SelectedNode.Text.ToString(); //Определяем выбранную группу
+                string parentgid = "";
+                string pgi = tvGroups.SelectedNode.Text.ToString(); //Определяем выбранную группу
 
-                    if (pgi == "Меркурий")
+                try
+                {
+                    SQLiteDataReader SQL = dbExecReader($"SELECT parent_id FROM groups WHERE group_name='{pgi}'");
+                    if (SQL.HasRows)
                     {
-                        MessageBox.Show("Это корневая группа, не нужно её удалять!", "Осторожно!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        while (SQL.Read())
+                        {
+                            parentgid = SQL["parent_id"].ToString();   // находим ID родительской группы
+
+                        }
+
+                    }
+                }
+                catch (SQLiteException err)
+                {
+                    MessageBox.Show($"Ошибка запроса к БД:\n {err}");
+                }
+
+                if (tvGroups.SelectedNode != null) // Проверяем есть ли выделенная строка
+                {
+                    
+                    if (parentgid == "0")
+                    {
+                        MessageBox.Show("Это корневая группа, не нужно её удалять! Можно просто переименовать", "Осторожно!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
                         try
                         {
+
                             SQLiteDataReader SQL = dbExecReader($"SELECT group_id FROM groups WHERE group_name='{pgi}'");
                             if (SQL.HasRows)
                             {
