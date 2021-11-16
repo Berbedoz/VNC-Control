@@ -61,6 +61,7 @@ namespace VNC_Control
             this.btConnect.Image = ((System.Drawing.Image)(resources.GetObject("btConnect.Image")));
             this.btConnect.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btConnect.Location = new System.Drawing.Point(0, 0);
+            this.btConnect.Margin = new System.Windows.Forms.Padding(0);
             this.btConnect.Name = "btConnect";
             this.btConnect.Size = new System.Drawing.Size(120, 36);
             this.btConnect.TabIndex = 0;
@@ -74,10 +75,10 @@ namespace VNC_Control
             this.btClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btClose.Image = ((System.Drawing.Image)(resources.GetObject("btClose.Image")));
             this.btClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btClose.Location = new System.Drawing.Point(821, 615);
+            this.btClose.Location = new System.Drawing.Point(826, 617);
             this.btClose.Margin = new System.Windows.Forms.Padding(0);
             this.btClose.Name = "btClose";
-            this.btClose.Size = new System.Drawing.Size(99, 41);
+            this.btClose.Size = new System.Drawing.Size(100, 40);
             this.btClose.TabIndex = 1;
             this.btClose.Text = "Закрыть";
             this.btClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -113,7 +114,7 @@ namespace VNC_Control
             this.cbSendPass.AutoSize = true;
             this.cbSendPass.Checked = true;
             this.cbSendPass.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbSendPass.Location = new System.Drawing.Point(411, 10);
+            this.cbSendPass.Location = new System.Drawing.Point(420, 10);
             this.cbSendPass.Name = "cbSendPass";
             this.cbSendPass.Size = new System.Drawing.Size(132, 19);
             this.cbSendPass.TabIndex = 4;
@@ -155,7 +156,8 @@ namespace VNC_Control
             // 
             this.btShowAll.Image = ((System.Drawing.Image)(resources.GetObject("btShowAll.Image")));
             this.btShowAll.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btShowAll.Location = new System.Drawing.Point(273, 0);
+            this.btShowAll.Location = new System.Drawing.Point(261, 0);
+            this.btShowAll.Margin = new System.Windows.Forms.Padding(0);
             this.btShowAll.Name = "btShowAll";
             this.btShowAll.Size = new System.Drawing.Size(116, 36);
             this.btShowAll.TabIndex = 18;
@@ -177,16 +179,17 @@ namespace VNC_Control
             this.panel1.Controls.Add(this.btConnect);
             this.panel1.Controls.Add(this.btShowAll);
             this.panel1.Controls.Add(this.cbSendPass);
-            this.panel1.Location = new System.Drawing.Point(12, 1);
+            this.panel1.Location = new System.Drawing.Point(0, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(908, 36);
+            this.panel1.Size = new System.Drawing.Size(926, 36);
             this.panel1.TabIndex = 19;
             // 
             // btReloadTV
             // 
             this.btReloadTV.Image = ((System.Drawing.Image)(resources.GetObject("btReloadTV.Image")));
             this.btReloadTV.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btReloadTV.Location = new System.Drawing.Point(126, 0);
+            this.btReloadTV.Location = new System.Drawing.Point(120, 0);
+            this.btReloadTV.Margin = new System.Windows.Forms.Padding(0);
             this.btReloadTV.Name = "btReloadTV";
             this.btReloadTV.Size = new System.Drawing.Size(141, 36);
             this.btReloadTV.TabIndex = 19;
