@@ -570,13 +570,16 @@ namespace VNC_Control
             string pathToVNC = "tvnviewer.exe";
             string argsVNC = @" -host=";
             string argsVNCpass = @" -password=";
+            string argsClipboard = @" -useclipboard=yes";
+            string argsMouselocal = @" -mouselocal=normal";
+
             string addrVNC = con;
 
             if (pass)
             {
                 Process iStartProcess = new Process(); // новый процесс
                 iStartProcess.StartInfo.FileName = pathToVNC; // путь к запускаемому файлу
-                iStartProcess.StartInfo.Arguments = argsVNC + addrVNC + argsVNCpass + passVNC; // параметры запуска
+                iStartProcess.StartInfo.Arguments = argsVNC + addrVNC + argsVNCpass + passVNC + argsClipboard + argsMouselocal; // параметры запуска
                 iStartProcess.Start(); // запускаем программу
             }
 
