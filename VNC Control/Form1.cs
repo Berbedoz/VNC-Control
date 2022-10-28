@@ -572,6 +572,7 @@ namespace VNC_Control
             string argsVNCpass = @" -password=";
             string argsClipboard = @" -useclipboard=yes";
             string argsMouselocal = @" -mouselocal=normal";
+            string argsScale = @" -scale=auto";
 
             string addrVNC = con;
 
@@ -579,7 +580,7 @@ namespace VNC_Control
             {
                 Process iStartProcess = new Process(); // новый процесс
                 iStartProcess.StartInfo.FileName = pathToVNC; // путь к запускаемому файлу
-                iStartProcess.StartInfo.Arguments = argsVNC + addrVNC + argsVNCpass + passVNC + argsClipboard + argsMouselocal; // параметры запуска
+                iStartProcess.StartInfo.Arguments = argsVNC + addrVNC + argsVNCpass + passVNC + argsClipboard + argsMouselocal + argsScale; // параметры запуска
                 iStartProcess.Start(); // запускаем программу
             }
 
